@@ -2,18 +2,23 @@
 import {getTopCategoryAPI} from '@/apis/category'
 import {getBannerAPI} from '@/apis/home'
 import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { onBeforeRouteUpdate, useRoute } from 'vue-router'
 import GoodsItem from '../Home/components/GoodsItem.vue'
 
 const categoryData = ref({})
 const route = useRoute()
-const getCateforyDate = async ()=>{
-  const res = await getTopCategoryAPI(route.params.id)
+const getCateforyDate = async (id = route.params.id)=>{
+  const res = await getTopCategoryAPI(id)
   categoryData.value = res.result
 }
 
 onMounted(()=>{
   getCateforyDate()
+})
+
+onBeforeRouteUpdate((to)=>{
+  console.log("路由变化")
+  getCateforyDate(to.params.id)
 })
 
 // 获取banner
