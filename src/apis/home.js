@@ -1,11 +1,11 @@
-import httpInstance from "@/utils/http";
+import request from "@/utils/http";
 
 /**
  * 获取banner
  */
 export function getBannerAPI(params = {}) {
   const { distributionSite = "1" } = params;
-  return httpInstance({
+  return request({
     url: "home/banner",
     params: {
       distributionSite,
@@ -17,7 +17,7 @@ export function getBannerAPI(params = {}) {
  * 获取新鲜好物
  */
 export function findNewAPI() {
-  return httpInstance({
+  return request({
     url: "home/new",
   });
 }
@@ -28,7 +28,7 @@ export function findNewAPI() {
  * @return {*}
  */
 export function getHotAPI() {
-  return httpInstance({
+  return request({
     url: "home/hot",
   });
 }
@@ -39,7 +39,7 @@ export function getHotAPI() {
  * @return {*}
  */
 export const getGoodsAPI = () => {
-  return httpInstance({
+  return request({
     url: "/home/goods",
   });
 };

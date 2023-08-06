@@ -1,4 +1,4 @@
-import httpInstance from "@/utils/http";
+import request from "@/utils/http";
 
 /**
  * @description: 获取分类数据
@@ -6,7 +6,7 @@ import httpInstance from "@/utils/http";
  * @return {*}
  */
 export const getTopCategoryAPI = (id) => {
-  return httpInstance({
+  return request({
     url: "/category",
     params: {
       id,
@@ -21,7 +21,7 @@ export const getTopCategoryAPI = (id) => {
  */
 
 export const getCategoryFilterAPI = (id) => {
-  return httpInstance({
+  return request({
     url: "/category/sub/filter",
     params: {
       id,
@@ -40,7 +40,7 @@ export const getCategoryFilterAPI = (id) => {
  * @return {*}
  */
 export const getSubCategoryAPI = (data) => {
-  return httpInstance({
+  return request({
     url: "/category/goods/temporary",
     method: "POST",
     data,

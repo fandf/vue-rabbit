@@ -1,18 +1,22 @@
 // axios基础封装
 
-import axios from 'axios'
+import axios from "axios";
 
-const httpInstance = axios.create({
-    baseURL: 'http://pcapi-xiaotuxian-front-devtest.itheima.net',
-    timeout: 5000
-})
+const request = axios.create({
+  baseURL: "http://pcapi-xiaotuxian-front-devtest.itheima.net",
+  timeout: 5000,
+});
 
 // 拦截器
-httpInstance.interceptors.request.use(config => {
-    return config
-}, e => Promise.reject(e))
+request.interceptors.request.use(
+  (config) => {
+    return config;
+  },
+  (e) => Promise.reject(e)
+);
 
-httpInstance.interceptors.response.use(res => res.data,
-    e => Promise.reject(e)
-)
-export default httpInstance
+request.interceptors.response.use(
+  (res) => res.data,
+  (e) => Promise.reject(e)
+);
+export default request;
