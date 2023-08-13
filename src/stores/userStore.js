@@ -1,6 +1,7 @@
 import { loginAPI } from "@/apis/user";
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import { useCartStore } from "./cartStore";
 
 export const useUserStore = defineStore(
   "user",
@@ -16,6 +17,8 @@ export const useUserStore = defineStore(
     //退出登录
     const clearUserInfo = () => {
       userInfo.value = {};
+      const cartStore = useCartStore();
+      cartStore.clearCart();
     };
 
     // 3. 以对象的格式把state 和 action 返回
